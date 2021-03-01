@@ -9,17 +9,125 @@
       "minute": 0
     }
   },
-  "schedule": [
+  "schedule": {
+    "lessons": [
+      {
+        "number": 1,
+        "time": {
+          "start": {
+            "hour": 8,
+            "minute": 30
+          },
+          "finish": {
+            "hour": 9,
+            "minute": 5
+          }
+        }
+      },
+      {
+        "number": 2,
+        "time": {
+          "start": {
+            "hour": 9,
+            "minute": 10
+          },
+          "finish": {
+            "hour": 9,
+            "minute": 45
+          }
+        }
+      },
+      {
+        "number": 3,
+        "time": {
+          "start": {
+            "hour": 10,
+            "minute": 0
+          },
+          "finish": {
+            "hour": 10,
+            "minute": 35
+          }
+        }
+      },
+      {
+        "number": 4,
+        "time": {
+          "start": {
+            "hour": 10,
+            "minute": 50
+          },
+          "finish": {
+            "hour": 11,
+            "minute": 25
+          }
+        }
+      },
+      {
+        "number": 5,
+        "time": {
+          "start": {
+            "hour": 11,
+            "minute": 40
+          },
+          "finish": {
+            "hour": 12,
+            "minute": 15
+          }
+        }
+      },
+      {
+        "number": 6,
+        "time": {
+          "start": {
+            "hour": 12,
+            "minute": 30
+          },
+          "finish": {
+            "hour": 13,
+            "minute": 5
+          }
+        }
+      },
+      {
+        "number": 7,
+        "time": {
+          "start": {
+            "hour": 13,
+            "minute": 10
+          },
+          "finish": {
+            "hour": 13,
+            "minute": 45
+          }
+        }
+      },
+      {
+        "number": 8,
+        "time": {
+          "start": {
+            "hour": 13,
+            "minute": 50
+          },
+          "finish": {
+            "hour": 14,
+            "minute": 25
+          }
+        }
+      }
+    ]
+  },
+  "breaks": [
     {
       "number": 1,
       "time": {
         "start": {
-          "hour": 8,
-          "minute": 30
+          "hour": 9,
+          "minute": 5
         },
         "finish": {
           "hour": 9,
-          "minute": 5
+          "minute": 10
         }
       }
     },
@@ -28,11 +136,11 @@
       "time": {
         "start": {
           "hour": 9,
-          "minute": 10
+          "minute": 45
         },
         "finish": {
-          "hour": 9,
-          "minute": 45
+          "hour": 10,
+          "minute": 0
         }
       }
     },
@@ -41,11 +149,11 @@
       "time": {
         "start": {
           "hour": 10,
-          "minute": 0
+          "minute": 35
         },
         "finish": {
           "hour": 10,
-          "minute": 35
+          "minute": 50
         }
       }
     },
@@ -53,12 +161,12 @@
       "number": 4,
       "time": {
         "start": {
-          "hour": 10,
-          "minute": 50
+          "hour": 11,
+          "minute": 25
         },
         "finish": {
           "hour": 11,
-          "minute": 25
+          "minute": 40
         }
       }
     },
@@ -66,12 +174,12 @@
       "number": 5,
       "time": {
         "start": {
-          "hour": 11,
-          "minute": 40
+          "hour": 12,
+          "minute": 15
         },
         "finish": {
           "hour": 12,
-          "minute": 15
+          "minute": 30
         }
       }
     },
@@ -79,12 +187,12 @@
       "number": 6,
       "time": {
         "start": {
-          "hour": 12,
-          "minute": 30
+          "hour": 13,
+          "minute": 5
         },
         "finish": {
           "hour": 13,
-          "minute": 5
+          "minute": 10
         }
       }
     },
@@ -93,24 +201,11 @@
       "time": {
         "start": {
           "hour": 13,
-          "minute": 10
+          "minute": 45
         },
         "finish": {
-          "hour": 13,
-          "minute": 45
-        }
-      }
-    },
-    {
-      "number": 8,
-      "time": {
-        "start": {
           "hour": 13,
           "minute": 50
-        },
-        "finish": {
-          "hour": 14,
-          "minute": 25
         }
       }
     }
