@@ -1,1 +1,1 @@
-vkwave~=0.2.10
+vkwave
