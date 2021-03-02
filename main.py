@@ -1,6 +1,6 @@
 from vkwave.bots import SimpleLongPollBot
 from filters import NotGroupMemberFilter
-from all_json import SETTINGS
+from settings import SETTINGS
 import periods
 
 bot = SimpleLongPollBot(tokens=SETTINGS["token"], group_id=SETTINGS["group_id"])
