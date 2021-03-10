@@ -2,11 +2,10 @@ from LiteVkApi import Vk
 from all_json import SETTINGS
 import periods
 
-vk_session = Vk.login(SETTINGS['group_id'], SETTINGS['token'])
 
-
-def is_member(user_id):
-    return vk_session.VkMethod("groups.isMember", {"group_id": SETTINGS["group_id"], "user_id": user_id})
+def is_member(user_id, vk_session):
+    return vk_session.VkMethod("groups.isMember",
+                               {"group_id": SETTINGS["group_id"], "user_id": user_id})
 
 
 def get_text_time():
@@ -24,17 +23,27 @@ def get_text_time():
         return "До уроков еще далеко :)"
 
 
-def get_answer(message, user_id):
-    if not is_member(user_id):
+def get_answer(message, user_id, vk_session):
+    if not is_member(user_id, vk_session):
         return "Упс! Походу ты не подписан на группу. Подпишись и возвращайся :)"
     return get_text_time()
 
 
-while True:
-    if vk_session.check_new_msg():
-        event = vk_session.get_event()
-        message, user_id = event.text, event.user_id
+def main():
+    while True:
+        vk_session = Vk.login(SETTINGS['group_id'], SETTINGS['token'])
+        try:
+            while True:
+                if vk_session.check_new_msg():
+                    event = vk_session.get_event()
+                    message, user_id = event.text, event.user_id
 
-        text = get_answer(message, user_id)
+                    text = get_answer(message, user_id, vk_session)
 
-        vk_session.msg(text, user_id)
+                    vk_session.msg(text, user_id)
+        except Exception as e:
+            print(e)
+
+
+if __name__ == '__main__':
+    main()
