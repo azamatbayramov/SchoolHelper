@@ -1,18 +1,15 @@
-from vkwave.bots import SimpleLongPollBot
-from filters import NotGroupMemberFilter
-from settings import SETTINGS
+from LiteVkApi import Vk
+from all_json import SETTINGS
 import periods
 
-bot = SimpleLongPollBot(tokens=SETTINGS["token"], group_id=SETTINGS["group_id"])
+vk_session = Vk.login(SETTINGS['group_id'], SETTINGS['token'])
 
 
-@bot.message_handler(NotGroupMemberFilter())
-async def not_group_member_handler(event):
-    return "Упс! Походу ты не подписан на группу. Подпишись и возвращайся :)"
+def is_member(user_id):
+    return vk_session.VkMethod("groups.isMember", {"group_id": SETTINGS["group_id"], "user_id": user_id})
 
 
-@bot.message_handler()
-async def main_handler(event):
+def get_text_time():
     now_time = periods.get_now_time()
     period = periods.get_period(now_time)
     if period:
@@ -27,4 +24,17 @@ async def main_handler(event):
         return "До уроков еще далеко :)"
 
 
-bot.run_forever()
+def get_answer(message, user_id):
+    if not is_member(user_id):
+        return "Упс! Походу ты не подписан на группу. Подпишись и возвращайся :)"
+    return get_text_time()
+
+
+while True:
+    if vk_session.check_new_msg():
+        event = vk_session.get_event()
+        message, user_id = event.text, event.user_id
+
+        text = get_answer(message, user_id)
+
+        vk_session.msg(text, user_id)
