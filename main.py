@@ -3,6 +3,9 @@ from all_json import SETTINGS
 import periods
 
 
+keyboard_schema = [{"Сколько минут до звонка?": "2"}]
+
+
 def is_member(user_id, vk_session):
     return vk_session.VkMethod("groups.isMember",
                                {"group_id": SETTINGS["group_id"], "user_id": user_id})
@@ -32,6 +35,9 @@ def get_answer(message, user_id, vk_session):
 def main():
     while True:
         vk_session = Vk.login(SETTINGS['group_id'], SETTINGS['token'])
+
+        keyboard = vk_session.new_keyboard(keyboard_schema)
+
         try:
             while True:
                 if vk_session.check_new_msg():
@@ -39,8 +45,8 @@ def main():
                     message, user_id = event.text, event.user_id
 
                     text = get_answer(message, user_id, vk_session)
+                    vk_session.send_keyboard(keyboard, user_id, text)
 
-                    vk_session.msg(text, user_id)
         except Exception as e:
             print(e)
 
