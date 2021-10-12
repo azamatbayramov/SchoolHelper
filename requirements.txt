@@ -1,1 +1,1 @@
-vkwave
+LiteVkApi
